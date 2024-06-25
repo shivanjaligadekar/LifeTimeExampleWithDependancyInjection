@@ -1,0 +1,53 @@
+﻿@model IEnumerable<LifeTimeExampleWithDependancyInjection.Models.SupplierViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div style="background-color:aquamarine">
+    @Html.Partial("_SecondData")
+    @{
+        Html.RenderPartial("_SecondData");
+    }
+</div>
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SuppId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SuppId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.SuppId }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.SuppId }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.SuppId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
